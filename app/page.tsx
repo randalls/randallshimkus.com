@@ -14,14 +14,8 @@ import {
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
 import { SkillsList } from '@/components/skills-list'
-import {
-  PROJECTS,
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-  SKILLS,
-} from './data'
+import { SkillsUsedList } from '@/components/skills-used-list'
+import { WORK_EXPERIENCE, BLOG_POSTS, EMAIL, SOCIAL_LINKS } from './data'
 import { useState } from 'react'
 
 const VARIANTS_CONTAINER = {
@@ -258,21 +252,7 @@ export default function Personal() {
                         <span className="font-normal dark:text-zinc-100">
                           Technologies Used
                         </span>
-                        <div className="grid grid-cols-6 gap-2 md:grid-cols-12">
-                          {SKILLS.filter((skill) =>
-                            skill.placesUsed.includes(job.company),
-                          ).map((filteredSkill) => (
-                            <div className="" key={filteredSkill.name}>
-                              <span
-                                title={filteredSkill.name}
-                                className="text-3xl"
-                                style={{ color: filteredSkill.color }}
-                              >
-                                {filteredSkill.icon}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
+                        <SkillsUsedList companyName={job.company} />
                       </div>
                     </div>
                   </div>

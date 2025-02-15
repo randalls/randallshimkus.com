@@ -19,3 +19,12 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+@theme {
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+}

@@ -1,8 +1,11 @@
 'use client'
 import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
+import Link from 'next/link'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
+import { AnimatedBackground } from '@/components/ui/animated-background'
+import { TextScramble } from '@/components/ui/text-scramble'
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -10,15 +13,16 @@ import {
   MorphingDialogClose,
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
-import Link from 'next/link'
-import { AnimatedBackground } from '@/components/ui/animated-background'
+import { SkillsList } from '@/components/skills-list'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
   BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
+  SKILLS,
 } from './data'
+import { useState } from 'react'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -124,9 +128,11 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const [blogTrigger, setBlogTrigger] = useState(false)
   return (
     <motion.main
-      className="space-y-24"
+      id="main"
+      className="mt-30 scroll-mt-80 space-y-24"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
@@ -137,13 +143,21 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            Accomplished software engineering leader with a passion for building
+            great products and teams. Veteran of both startup and enterprise
+            SaaS, I've worked with various technologies and some truly amazing
+            colleagues.
+          </p>
+          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga sequi
+            minus reprehenderit optio consequatur quam adipisci totam eveniet
+            quis enim, eos unde, voluptatem dolore et repudiandae aut, eaque
+            placeat temporibus!
           </p>
         </div>
       </motion.section>
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -170,51 +184,157 @@ export default function Personal() {
             </div>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section
+        id="work"
+        className="scroll-mt-40"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <TextScramble
+          as="h3"
+          className="mb-5 text-lg font-medium"
+          duration={2.4}
+        >
+          Work
+        </TextScramble>
+
+        {/* <h3 className="mb-5 text-lg font-medium">Work Experience</h3> */}
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <MorphingDialog
+              transition={{ type: 'spring', stiffness: 200, damping: 24 }}
               key={job.id}
             >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
+              <MorphingDialogTrigger className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30">
+                <Spotlight
+                  className="from-zinc-900 via-zinc-700 to-zinc-500 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
+                  size={64}
+                />
+                <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
+                  <div className="relative flex w-full flex-row justify-between">
+                    <div>
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {job.title}
+                      </h4>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {job.company}
+                      </p>
+                    </div>
+                    <p className="text-zinc-600 dark:text-zinc-400">
+                      {job.start} - {job.end}
                     </p>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
                 </div>
-              </div>
-            </a>
+              </MorphingDialogTrigger>
+              <MorphingDialogContainer>
+                <MorphingDialogContent className="relative h-auto w-[80%] overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30">
+                  <Spotlight
+                    className="from-zinc-900 via-zinc-700 to-zinc-500 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
+                    size={64}
+                  />
+                  <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
+                    <div className="relative mt-12 flex w-full flex-row justify-between">
+                      <div>
+                        <h4 className="font-normal dark:text-zinc-100">
+                          {job.title}
+                        </h4>
+                        <p className="text-zinc-500 dark:text-zinc-400">
+                          {job.company}
+                        </p>
+                      </div>
+                      <p className="text-zinc-600 dark:text-zinc-400">
+                        {job.start} - {job.end}
+                      </p>
+                    </div>
+                    <div className="relative mt-4 flex w-full flex-row">
+                      <div
+                        className="text-zinc-600 dark:text-zinc-400"
+                        dangerouslySetInnerHTML={{ __html: job.description }}
+                      />
+                    </div>
+                    <div className="relative mt-4 flex w-full flex-row justify-center">
+                      <div style={{ textAlign: 'center' }}>
+                        <span className="font-normal dark:text-zinc-100">
+                          Technologies Used
+                        </span>
+                        <ul className="flex">
+                          {SKILLS.filter((skill) =>
+                            skill.placesUsed.includes(job.company),
+                          ).map((filteredSkill) => (
+                            <li
+                              key={filteredSkill.name}
+                              style={{
+                                color: filteredSkill.color,
+                              }}
+                              className="text-3xl"
+                            >
+                              <span title={filteredSkill.name}>
+                                {filteredSkill.icon}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <MorphingDialogClose className="text-zinc-500" />
+                </MorphingDialogContent>
+              </MorphingDialogContainer>
+            </MorphingDialog>
           ))}
         </div>
       </motion.section>
 
+      {/* Skills Section */}
       <motion.section
+        id="skills"
+        className="scroll-mt-40"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
+        <TextScramble
+          as="h3"
+          className="mb-5 text-lg font-medium"
+          duration={2.4}
+        >
+          Skills
+        </TextScramble>
+        <div className="flex-1">
+          <p className="mb-8 text-zinc-600 dark:text-zinc-400">
+            I have worked with many different technologies over the course of my
+            career. I started in the Microsoft stack early on, but gradually
+            expanded my scope to include just about anything that fit the
+            current need.
+          </p>
+        </div>
+        <SkillsList />
+        <div className="flex-1">
+          <p className="dark: mt-8 text-zinc-400 text-zinc-600">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ex
+            accusantium accusamus tempore. Maxime minima quo exercitationem
+            quidem unde optio accusamus fuga, nisi voluptates accusantium
+            veritatis non saepe officiis magnam.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Blog Section - Top of "Connect" section */}
+      <motion.section
+        id="connect"
+        className="scroll-mt-80"
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <TextScramble
+          as="h3"
+          className="mb-5 text-lg font-medium"
+          duration={2.4}
+        >
+          Blog
+        </TextScramble>
+
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
             enableHover
@@ -246,11 +366,18 @@ export default function Personal() {
         </div>
       </motion.section>
 
+      {/* Contact Section */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
+        <TextScramble
+          as="h3"
+          className="mb-5 text-lg font-medium"
+          duration={2.4}
+        >
+          Connect
+        </TextScramble>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           Feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>

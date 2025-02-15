@@ -149,10 +149,11 @@ export default function Personal() {
             colleagues.
           </p>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga sequi
-            minus reprehenderit optio consequatur quam adipisci totam eveniet
-            quis enim, eos unde, voluptatem dolore et repudiandae aut, eaque
-            placeat temporibus!
+            I have deep experience in domain driven design, architectural
+            patterns, and agile methodologies. I love working with people to
+            solve real world problems. Fortunately, I've worked in many
+            different verticals, both product and customer focused, and have had
+            many opportunities to make lasting impacts.
           </p>
         </div>
       </motion.section>
@@ -199,8 +200,6 @@ export default function Personal() {
         >
           Work
         </TextScramble>
-
-        {/* <h3 className="mb-5 text-lg font-medium">Work Experience</h3> */}
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <MorphingDialog
@@ -310,14 +309,14 @@ export default function Personal() {
           </p>
         </div>
         <SkillsList />
-        <div className="flex-1">
+        {/* <div className="flex-1">
           <p className="dark: mt-8 text-zinc-400 text-zinc-600">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ex
             accusantium accusamus tempore. Maxime minima quo exercitationem
             quidem unde optio accusamus fuga, nisi voluptates accusantium
             veritatis non saepe officiis magnam.
           </p>
-        </div>
+        </div> */}
       </motion.section>
 
       {/* Blog Section - Top of "Connect" section */}

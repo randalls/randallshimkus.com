@@ -406,7 +406,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Altruism in Software',
     description:
       'How to ensure everyone succeeds in a software project: a case study.',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    link: '/blog/altruism-in-software',
     uid: 'blog-1',
   },
 ]

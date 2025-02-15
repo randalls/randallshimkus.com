@@ -206,7 +206,7 @@ export default function Personal() {
               transition={{ type: 'spring', stiffness: 200, damping: 24 }}
               key={job.id}
             >
-              <MorphingDialogTrigger className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30">
+              <MorphingDialogTrigger className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[2px] dark:bg-zinc-600/30">
                 <Spotlight
                   className="from-zinc-900 via-zinc-700 to-zinc-500 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
                   size={64}
@@ -228,12 +228,12 @@ export default function Personal() {
                 </div>
               </MorphingDialogTrigger>
               <MorphingDialogContainer>
-                <MorphingDialogContent className="relative h-auto w-[80%] overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30">
+                <MorphingDialogContent className="relative h-auto w-[80%] overflow-hidden rounded-2xl bg-zinc-300/30 p-[2px] dark:bg-zinc-600/30">
                   <Spotlight
                     className="from-zinc-900 via-zinc-700 to-zinc-500 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                    size={64}
+                    size={256}
                   />
-                  <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
+                  <div className="relative rounded-[15px] bg-white p-4 dark:bg-zinc-950">
                     <div className="relative mt-12 flex w-full flex-row justify-between">
                       <div>
                         <h4 className="font-normal dark:text-zinc-100">
@@ -247,7 +247,7 @@ export default function Personal() {
                         {job.start} - {job.end}
                       </p>
                     </div>
-                    <div className="relative mt-4 flex w-full flex-row">
+                    <div className="relative mt-4 flex max-h-100 w-full flex-row overflow-scroll">
                       <div
                         className="text-zinc-600 dark:text-zinc-400"
                         dangerouslySetInnerHTML={{ __html: job.description }}
@@ -258,23 +258,21 @@ export default function Personal() {
                         <span className="font-normal dark:text-zinc-100">
                           Technologies Used
                         </span>
-                        <ul className="flex">
+                        <div className="grid grid-cols-6 gap-2 md:grid-cols-12">
                           {SKILLS.filter((skill) =>
                             skill.placesUsed.includes(job.company),
                           ).map((filteredSkill) => (
-                            <li
-                              key={filteredSkill.name}
-                              style={{
-                                color: filteredSkill.color,
-                              }}
-                              className="text-3xl"
-                            >
-                              <span title={filteredSkill.name}>
+                            <div className="" key={filteredSkill.name}>
+                              <span
+                                title={filteredSkill.name}
+                                className="text-3xl"
+                                style={{ color: filteredSkill.color }}
+                              >
                                 {filteredSkill.icon}
                               </span>
-                            </li>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -10,7 +10,7 @@ export function Header() {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           <div className="header">
-            <Link href="/" className="font-medium dark:text-white">
+            <Link href="/" className="font-medium dark:text-zinc-100">
               <h1 className="text-3xl">Randall Shimkus</h1>
             </Link>
             <span className="text-zinc-600 dark:text-zinc-300">
@@ -20,14 +20,17 @@ export function Header() {
           <nav className="hidden lg:block">
             <ul className="flex space-x-4">
               <li>
-                <Link href="/" className="text-zinc-600 dark:text-zinc-300">
+                <Link
+                  href="/"
+                  className="text-zinc-600 hover:text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-100"
+                >
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   href="/#work"
-                  className="text-zinc-600 dark:text-zinc-300"
+                  className="text-zinc-600 hover:text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-100"
                 >
                   Work
                 </Link>
@@ -35,7 +38,7 @@ export function Header() {
               <li>
                 <Link
                   href="/#skills"
-                  className="text-zinc-600 dark:text-zinc-300"
+                  className="text-zinc-600 hover:text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-100"
                 >
                   Skills
                 </Link>
@@ -43,7 +46,7 @@ export function Header() {
               <li>
                 <Link
                   href="/#connect"
-                  className="text-zinc-600 dark:text-zinc-300"
+                  className="text-zinc-600 hover:text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-100"
                 >
                   Connect
                 </Link>
@@ -70,21 +73,27 @@ export function Header() {
         <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
           <Link
             href="/"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+            className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-400 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
           >
             Home
           </Link>
           <Link
-            href="/about"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+            href="/#work"
+            className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-400 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
           >
-            About
+            Work
           </Link>
           <Link
-            href="/contact"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+            href="/#skills"
+            className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-400 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
           >
-            Contact
+            Skills
+          </Link>
+          <Link
+            href="/#connect"
+            className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-400 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+          >
+            Connect
           </Link>
         </div>
       </div>

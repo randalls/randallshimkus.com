@@ -6,7 +6,7 @@ import { useState } from 'react'
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
-    <header className="bg-opacity-60 fixed top-10 right-100 left-100 z-50 rounded-2xl shadow-xl backdrop-blur-md sm:right-0 sm:left-0 md:right-50 md:left-50 dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]">
+    <header className="bg-opacity-60 fixed top-10 right-0 left-0 z-50 rounded-2xl shadow-xl backdrop-blur-md md:right-20 md:left-20 dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           <div className="header">

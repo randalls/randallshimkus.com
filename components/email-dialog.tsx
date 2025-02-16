@@ -107,7 +107,7 @@ export function EmailDialog() {
       <Dialog open={isOpen} onOpenChange={handleOpenState}>
         <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
           <DialogTrigger className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm font-normal text-zinc-900 transition-colors duration-200 hover:cursor-pointer hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700">
-            Email Me
+            Email
             {svg}
           </DialogTrigger>
         </Magnetic>

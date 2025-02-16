@@ -10,7 +10,10 @@ export function Header() {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           <div className="header">
-            <Link href="/" className="font-medium dark:text-zinc-100">
+            <Link
+              href="/"
+              className="font-medium text-zinc-900 dark:text-zinc-100"
+            >
               <h1 className="text-3xl">Randall Shimkus</h1>
             </Link>
             <span className="text-zinc-600 dark:text-zinc-300">

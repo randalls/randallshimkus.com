@@ -120,9 +120,8 @@ export function EmailDialog() {
               It's nice to meet you!
             </DialogDescription>
           </DialogHeader>
-          {/* <EmailForm /> */}
           <div className="relative flex flex-col rounded-xl bg-transparent">
-            <form className="mt-8 mb-2 w-80" onSubmit={handleSubmit}>
+            <form className="mt-8 w-100" onSubmit={handleSubmit}>
               <div className="mb-1 flex flex-col gap-6">
                 <div className="w-full">
                   <label className="mb-2 block text-sm text-zinc-700 dark:text-zinc-300">

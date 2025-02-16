@@ -87,7 +87,7 @@ export function SkillCard(props: SkillCardProps) {
           </div>
         </div>
         <div
-          className="meta mt-4 grid grid-cols-2 text-white"
+          className="meta mt-4 grid grid-cols-2 text-zinc-100"
           style={{ backgroundColor: `${props.color}` }}
         >
           <div style={{ borderRight: 'solid 1px' }}>

@@ -92,7 +92,7 @@ export default function Personal() {
   return (
     <motion.main
       id="main"
-      className="mt-30 scroll-mt-80 space-y-24"
+      className="mt-30 scroll-mt-80 space-y-18"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
@@ -114,6 +114,11 @@ export default function Personal() {
             solve real world problems. Fortunately, I've worked in many
             different verticals, both product and customer focused, and have had
             many opportunities to make lasting impacts.
+          </p>
+          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+            After some intentional down time - the first time in my career that
+            I've been able to take such time - I'm currently looking for a new
+            role.
           </p>
         </div>
       </motion.section>

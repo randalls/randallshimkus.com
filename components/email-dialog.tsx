@@ -8,8 +8,9 @@ import {
   DialogTrigger,
 } from './ui/dialog'
 import { Magnetic } from './ui/magnetic'
+import { BorderTrail } from './ui/border-trail'
 import { FormEventHandler, useState } from 'react'
-import { FcCheckmark } from 'react-icons/fc'
+import { FaAngellist, FaFrown } from 'react-icons/fa'
 
 type FormData = {
   fromName: string
@@ -42,6 +43,7 @@ const sendEmail = async (
       },
       body: JSON.stringify(payload),
     })
+    return res
   } catch (e) {
     throw e
   }
@@ -66,12 +68,16 @@ export function EmailDialog() {
     }
     try {
       setFormState('submitting')
-      await sendEmail(payload, serviceId, templateId, userId).then(() => {
-        setFormState('success')
-        setTimeout(() => {
-          setFormState('idle')
-          handleOpenState()
-        }, 1000)
+      await sendEmail(payload, serviceId, templateId, userId).then((res) => {
+        if (res.ok) {
+          setFormState('success')
+          setTimeout(() => {
+            setFormState('idle')
+            handleOpenState()
+          }, 2500)
+        } else {
+          setFormState('error')
+        }
       })
     } catch (e) {
       setFormState('error')
@@ -118,7 +124,43 @@ export function EmailDialog() {
               It's nice to meet you!
             </DialogDescription>
           </DialogHeader>
-          <div className="relative flex flex-col rounded-xl bg-transparent">
+          <div
+            className="mt-24 w-full justify-center"
+            style={
+              formState === 'success'
+                ? {
+                    display: 'flex',
+                  }
+                : { display: 'none' }
+            }
+          >
+            <FaAngellist className="color-green text-2xl" /> Your email was sent
+            successfully!
+          </div>
+          <div
+            className="mt-24 w-full justify-center"
+            style={
+              formState === 'error'
+                ? {
+                    display: 'flex',
+                  }
+                : { display: 'none' }
+            }
+          >
+            <FaFrown className="color-red text-2xl" /> There was an error
+            sending your email . . .
+          </div>
+          <div
+            className="relative flex flex-col rounded-xl bg-transparent"
+            style={
+              formState === 'success' || formState === 'error'
+                ? {
+                    visibility: 'hidden',
+                    display: 'none',
+                  }
+                : { visibility: 'visible', display: 'flex' }
+            }
+          >
             <form className="mt-8 w-100" onSubmit={handleSubmit}>
               <div className="mb-1 flex flex-col gap-6">
                 <div className="w-full">
@@ -127,7 +169,7 @@ export function EmailDialog() {
                   </label>
                   <input
                     autoComplete="name"
-                    className="ease w-full rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm text-zinc-900 shadow-sm transition duration-300 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-zinc-400 focus:shadow focus:outline-none dark:text-zinc-100"
+                    className="ease w-full rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm text-zinc-900 shadow-sm transition duration-300 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-zinc-400 focus:shadow focus:outline-none dark:border-zinc-400 dark:text-zinc-100 dark:focus:border-zinc-200"
                     disabled={disabled}
                     maxLength={100}
                     name="fromName"
@@ -142,7 +184,7 @@ export function EmailDialog() {
                   </label>
                   <input
                     autoComplete="email"
-                    className="ease w-full rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm text-zinc-900 shadow-sm transition duration-300 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-zinc-400 focus:shadow focus:outline-none dark:text-zinc-100"
+                    className="ease w-full rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm text-zinc-900 shadow-sm transition duration-300 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-zinc-400 focus:shadow focus:outline-none dark:border-zinc-400 dark:text-zinc-100 dark:focus:border-zinc-200"
                     disabled={disabled}
                     maxLength={100}
                     name="fromEmail"
@@ -158,7 +200,7 @@ export function EmailDialog() {
                   <textarea
                     name="message"
                     required
-                    className="ease w-full rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm text-zinc-900 shadow-sm transition duration-300 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-zinc-400 focus:shadow focus:outline-none dark:text-zinc-100"
+                    className="ease w-full rounded-md border border-zinc-200 bg-transparent px-3 py-2 text-sm text-zinc-900 shadow-sm transition duration-300 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-zinc-400 focus:shadow focus:outline-none dark:border-zinc-400 dark:text-zinc-100 dark:focus:border-zinc-200"
                     rows={8}
                   ></textarea>
                 </div>
@@ -172,20 +214,7 @@ export function EmailDialog() {
               </button>
             </form>
           </div>
-          <div
-            className="w-full"
-            style={
-              formState === 'success'
-                ? {
-                    visibility: 'visible',
-                  }
-                : { visibility: 'hidden' }
-            }
-          >
-            <p className="text-green">
-              <FcCheckmark /> Your email was sent successfully!
-            </p>
-          </div>
+
           <DialogClose />
         </DialogContent>
       </Dialog>

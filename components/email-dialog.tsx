@@ -43,8 +43,7 @@ const sendEmail = async (
       body: JSON.stringify(payload),
     })
   } catch (e) {
-    console.log('error sending to emailjs')
-    console.log(e)
+    throw e
   }
 }
 
@@ -69,7 +68,6 @@ export function EmailDialog() {
       setFormState('submitting')
       await sendEmail(payload, serviceId, templateId, userId).then(() => {
         setFormState('success')
-        console.log('email sent successfully!')
         setTimeout(() => {
           setFormState('idle')
           handleOpenState()
@@ -111,7 +109,7 @@ export function EmailDialog() {
             {svg}
           </DialogTrigger>
         </Magnetic>
-        <DialogContent className="w-full max-w-md p-6 shadow-[0_4px_12px_#0000001a] backdrop:bg-white/80 backdrop:backdrop-blur-xs">
+        <DialogContent className="w-full max-w-md p-6 shadow-[0_4px_12px_#0000001a] backdrop:bg-zinc-100/80 backdrop:backdrop-blur-xs dark:backdrop:bg-zinc-700/80">
           <DialogHeader>
             <DialogTitle className="text-zinc-900 dark:text-zinc-100">
               Thanks for reaching out
@@ -148,7 +146,7 @@ export function EmailDialog() {
                     disabled={disabled}
                     maxLength={100}
                     name="fromEmail"
-                    placeholder="john@johntoblerone.com"
+                    placeholder="you@somedomain.com"
                     required
                     type="email"
                   />

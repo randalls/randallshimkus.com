@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from './ui/dialog'
 import { Magnetic } from './ui/magnetic'
-import { BorderTrail } from './ui/border-trail'
+import { BorderTrail } from './ui/border-trail' //TODO: implement this while form is submitting
 import { FormEventHandler, useState } from 'react'
 import { FaAngellist, FaFrown } from 'react-icons/fa'
 
